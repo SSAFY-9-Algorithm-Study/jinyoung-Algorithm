@@ -1,11 +1,11 @@
 package week7;
 
-public class 양궁대회 {
+public class Solution {
     static int max;
     static int[] arr, lionScoreArr, result;
 
     public static void main(String[] args) {
-        양궁대회 solution = new 양궁대회();
+        Solution solution = new Solution();
         solution.solution(10, new int[] { 0, 0, 0, 0, 0, 0, 0, 0, 3, 4, 3 });
     }
 
