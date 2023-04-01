@@ -1,4 +1,4 @@
-package test;
+package week8;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -6,7 +6,6 @@ import java.io.InputStreamReader;
 import java.util.StringTokenizer;
 
 public class p14722 {
-
 	static int N;
 	static int[][] map, dp;
 	static int[] dx = { 1, 0 };
@@ -31,25 +30,24 @@ public class p14722 {
 		}
 		for (int i = 1; i <= N; i++) {
 			for (int j = 1; j <= N; j++) {
-				// ÇàÀ» ±âÁØÀ¸·Î ºñ±³
-				// ¿ìÀ¯ ¸ÔÀ» ¼ö ÀÖ´Â °æ¿ì
+				// í–‰ì„ ê¸°ì¤€ìœ¼ë¡œ ë¹„êµ
+				// ìš°ìœ  ë¨¹ì„ ìˆ˜ ìžˆëŠ” ê²½ìš°
 				if (map[i][j] == (dp[i][j - 1]) % 3) {
 					dp[i][j] = Math.max(dp[i][j], dp[i][j - 1] + 1);
-				} else { // ¿ìÀ¯ ¸ÔÀ» ¼ö ¾ø´Â °æ¿ì
+				} else { // ìš°ìœ  ë¨¹ì„ ìˆ˜ ì—†ëŠ” ê²½ìš°
 					dp[i][j] = Math.max(dp[i][j], dp[i][j - 1]);
 				}
-				
-				// ¿­À» ±âÁØÀ¸·Î ºñ±³
-				// ¿ìÀ¯ ¸ÔÀ» ¼ö ÀÖ´Â °æ¿ì
+
+				// ì—´ì„ ê¸°ì¤€ìœ¼ë¡œ ë¹„êµ
+				// ìš°ìœ  ë¨¹ì„ ìˆ˜ ìžˆëŠ” ê²½ìš°
 				if (map[i][j] == (dp[i - 1][j]) % 3) {
 					dp[i][j] = Math.max(dp[i][j], dp[i - 1][j] + 1);
-				} else { // ¿ìÀ¯ ¸ÔÀ» ¼ö ¾ø´Â °æ¿ì
+				} else { // ìš°ìœ  ë¨¹ì„ ìˆ˜ ì—†ëŠ” ê²½ìš°
 					dp[i][j] = Math.max(dp[i][j], dp[i - 1][j]);
 				}
 
 			}
 		}
-
 		System.out.println(dp[N][N]);
 	}
 

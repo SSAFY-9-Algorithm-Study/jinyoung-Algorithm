@@ -1,4 +1,4 @@
-package test;
+package week7;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -31,23 +31,23 @@ public class p18427 {
 
     static void setBlock() {
         for (int i = 0; i <= N; i++) {
-            dp[i][0] = 1; // 0À» ¸¸µå´Â °æ¿ì´Â Ç×»ó 1
+            dp[i][0] = 1; // 0ì„ ë§Œë“œëŠ” ê²½ìš°ëŠ” í•­ìƒ 1
         }
         for (int i = 1; i <= N; i++) {
             for (int j = 1; j <= H; j++) {
                 for (int k = 0; k < M; k++) {
-                    if (j < block[i][k]) { // ºí·ÏÀ» ½×À» ¼ö ¾ø´Â °æ¿ì
+                    if (j < block[i][k]) { // ë¸”ë¡ì„ ìŒ“ì„ ìˆ˜ ì—†ëŠ” ê²½ìš°
                         continue;
                     }
                     if (block[i][k] < 1) {
                         continue;
                     }
-                    // ºí·ÏÀ» ½×À» ¼ö ÀÖ´Â °æ¿ì
+                    // ë¸”ë¡ì„ ìŒ“ì„ ìˆ˜ ìžˆëŠ” ê²½ìš°
                     dp[i][j] += dp[i - 1][j - block[i][k]] % 10007;
                 }
                 dp[i][j] += dp[i - 1][j] % 10007;
             }
         }
-        
+
     }
 }

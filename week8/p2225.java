@@ -1,4 +1,4 @@
-package test;
+package week8;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -13,15 +13,15 @@ public class p2225 {
 
 		long[][] dp = new long[K + 1][N + 1];
 
-		// k°¡ 2ÀÏ ¶§´Â ÀüºÎ 1·Î Ã¤¿ì±â
+		// kê°€ 2ì¼ ë•ŒëŠ” ì „ë¶€ 1ë¡œ ì±„ìš°ê¸°
 		for (int i = 0; i <= N; i++) {
 			dp[1][i] = 1;
 		}
 
 		for (int i = 2; i <= K; i++) {
-			// ¸Ç µÚ´Â ¹«Á¶°Ç 1
+			// ë§¨ ë’¤ëŠ” ë¬´ì¡°ê±´ 1
 			dp[i][N] = 1;
-			// µÚ¿¡¼­ºÎÅÍ ÀÌÀü dp°ªÀÇ °¢ ÀÚ¸®ÀÇ ÇÕ°è¸¦ dp¿¡ ³Ö¾îÁÜ
+			// ë’¤ì—ì„œë¶€í„° ì´ì „ dpê°’ì˜ ê° ìë¦¬ì˜ í•©ê³„ë¥¼ dpì— ë„£ì–´ì¤Œ
 			for (int j = N - 1; j >= 0; j--) {
 				dp[i][j] = (dp[i][j + 1] + dp[i - 1][j]) % 1_000_000_000;
 			}
