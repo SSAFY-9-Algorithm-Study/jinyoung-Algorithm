@@ -21,6 +21,7 @@ public class p20056 {
     }
 
     static int N, M, K;
+    static int[][] fireball;
     static ArrayList<Fireball> fireballList;
     static ArrayList<Fireball>[][] map;
     static int[] dx = { -1, -1, 0, 1, 1, 1, 0, -1 };
@@ -32,6 +33,7 @@ public class p20056 {
         N = Integer.parseInt(st.nextToken());
         M = Integer.parseInt(st.nextToken());
         K = Integer.parseInt(st.nextToken());
+        fireball = new int[M][5];
         fireballList = new ArrayList<>();
         map = new ArrayList[N][N];
         for (int i = 0; i < N; i++) {
@@ -66,8 +68,14 @@ public class p20056 {
         // 모든 파이어볼이 자신의 방향 d로 속력 s칸 만큼 이동
         for (Fireball f : fireballList) {
             // 이동
-            f.r = (N + f.r + dx[f.d] * (f.s % N)) % N;
-            f.c = (N + f.c + dy[f.d] * (f.s % N)) % N;
+            f.r = (f.r + dx[f.d] * f.s) % N;
+            if (f.r < 0) {
+                f.r = N - Math.abs(f.r);
+            }
+            f.c = (f.c + dy[f.d] * f.s) % N;
+            if (f.c < 0) {
+                f.c = N - Math.abs(f.c);
+            }
             // map에 파이어볼 정보를 넣어줌
             map[f.r][f.c].add(f);
         }
