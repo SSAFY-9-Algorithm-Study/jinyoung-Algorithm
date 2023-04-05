@@ -94,16 +94,19 @@ public class p20056 {
                         sumM += f.m;
                         sumS += f.s;
                         if (f.d % 2 == 0) {
-                            isEven = true;
-                        } else {
                             isOdd = true;
+                        } else {
+                            isEven = true;
                         }
                         fireballList.remove(f);
                     }
                     int newM = sumM / 5;
                     int newS = sumS / map[i][j].size();
+
                     // 질량이 0인 파이어볼은 소멸됨
                     if (newM == 0) {
+                        // 현재 위치의 파이어볼은 지워줌
+                        map[i][j].clear();
                         continue;
                     }
 
