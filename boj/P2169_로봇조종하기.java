@@ -39,16 +39,19 @@ public class P2169_로봇조종하기 {
 			int[] leftArr = new int[M];
 			int[] rightArr = new int[M];
 			
+			// 왼 -> 오 / 상 -> 하 비교 
 			leftArr[0] = dp[i - 1][0] + map[i][0];
 			for (int j = 1; j < M; j++) {
 				leftArr[j] = Math.max(leftArr[j - 1], dp[i - 1][j]) + map[i][j];
 			}
 			
+			// 오 -> 왼 / 상 -> 하 비교 
 			rightArr[M - 1] = dp[i - 1][M - 1] + map[i][M - 1];
 			for (int j = M - 2; j >= 0; j--) {
 				rightArr[j] = Math.max(rightArr[j + 1], dp[i - 1][j]) + map[i][j];
 			}
 			
+			// 위에서 비교한 배열 중 큰 값을 dp 배열에 저장 
 			for (int j = 0; j < M; j++) {
 				dp[i][j] = Math.max(leftArr[j], rightArr[j]);
 			}
